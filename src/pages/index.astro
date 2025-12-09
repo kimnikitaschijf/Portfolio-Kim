@@ -339,5 +339,25 @@ const projects = [
         <i class="fas fa-moon theme-toggle__moon"></i>
       </span>
     </button>
+
+    <!-- Scripts -->
+    <script>
+      import { initAnimations } from "../scripts/animations.js";
+      import { initThemeToggle } from "../scripts/theme.js";
+
+      document.addEventListener("DOMContentLoaded", () => {
+        initThemeToggle();
+        // Load animations async
+        if ("IntersectionObserver" in window) {
+          setTimeout(() => initAnimations(), 100);
+        }
+      });
+    </script>
+
+    <!-- Non-critical CSS -->
+    <style is:global>
+      @import "../styles/styleguide.css";
+      @import "../styles/styles.css";
+    </style>
   </body>
 </html>
