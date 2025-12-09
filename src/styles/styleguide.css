@@ -42,9 +42,35 @@
     --color-border: oklch(90% 0.01 0);
     --color-gray-light: oklch(95% 0.01 0);
     --color-gray-medium: oklch(70% 0.02 0);
+    --color-text-highlight: oklch(97.02% 0.000 0);
+    --color-accent-secondary: oklch(32.11% 0.000 0);
+
+    /* MARK: Box-shadow */
+    --box-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --box-shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);
+
+    /* MARK: Border radius */
+    --border-radius-sm: 0.25rem;
+    --border-radius: 0.5rem;
+    --border-radius-md: 0.75rem;
+    --border-radius-lg: 1rem;
+
+    /* MARK: Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.6s ease;
 }
 
-/* ========== RESET & BASE STYLES ========== */
+/* OKLCH support check voor betere kleuren */
+@supports (color: oklch(56.24% 0.173 40.93)) {
+    :root {
+        --color-text-highlight: oklch(90% 0.2 80);
+        --color-accent-secondary: oklch(90% 0.2 80);
+    }
+}
+
+/* MARK: Basic styling */
 * {
     margin: 0;
     padding: 0;
@@ -88,8 +114,66 @@ body {
     text-decoration: none;
     font-weight: 700;
     z-index: 9999;
+    transition: top var(--transition-normal);
 }
 
 .skip-link:focus {
     top: 0;
+}
+
+/* MARK: Animation keyframes */
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+}
+
+@keyframes expandLine {
+    0% {
+        width: 50px;
+    }
+
+    100% {
+        width: 150px;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 0.2;
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
 }
