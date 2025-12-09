@@ -1,11 +1,343 @@
+---
+const title = "Kim Nikita - FDND Student";
+const currentYear = new Date().getFullYear();
+
+// Foto's in de foto lijst
+const photos = [
+  {
+    url: "https://res.cloudinary.com/dcfitfken/image/upload/v1765047575/IMG_7903_pd9juz.jpg",
+    alt: "Kim Nikita professional headshot with neutral background",
+  },
+  {
+    url: "https://res.cloudinary.com/dcfitfken/image/upload/v1757411667/IMG_5736_polarr_ynuoub.jpg",
+    alt: "Kim Nikita outdoor portrait",
+  },
+  {
+    url: "https://res.cloudinary.com/dcfitfken/image/upload/v1765047576/IMG_8033_pwqf43.jpg",
+    alt: "Kim Nikita casual portrait",
+  },
+  {
+    url: "https://res.cloudinary.com/dcfitfken/image/upload/w_500,f_auto,q_auto/cover-picture-1-800_qih5f2.jpg",
+    alt: "Kim Nikita creative shot",
+  },
+  {
+    url: "https://res.cloudinary.com/dcfitfken/image/upload/w_500,f_auto,q_auto/IMG_6302_jgaog2.jpg",
+    alt: "Kim Nikita lifestyle photo",
+  },
+  {
+    url: "https://res.cloudinary.com/dcfitfken/image/upload/w_500,f_auto,q_auto/EBFCDFEF-E467-4159-B2A9-F5B34DE00D70_p6kgcb.png",
+    alt: "Kim Nikita professional setting",
+  },
+  {
+    url: "https://res.cloudinary.com/dcfitfken/image/upload/v1757412869/IMG_2374_klfucy.jpg",
+    alt: "Kim Nikita candid moment",
+  },
+  {
+    url: "https://res.cloudinary.com/dcfitfken/image/upload/v1757411670/IMG_2448_ck8wva.jpg",
+    alt: "Kim Nikita portrait in natural light",
+  },
+];
+
+// Data voor mijn projecten
+const projects = [
+  {
+    title: "Learning Journal",
+    category: "Documentation & Growth",
+    image:
+      "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&h=750&fit=crop",
+    link: "https://github.com/kimnikitaschijf/i-love-web/wiki",
+    description:
+      "Personal development documentation and weekly learning reflections",
+  },
+  {
+    title: "We Love Web",
+    category: "Weekly Lectures",
+    image:
+      "https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&h=750&fit=crop",
+    link: "#",
+    description: "Collection of weekly web development lectures and notes",
+  },
+  {
+    title: "Digital Garden",
+    category: "Experiments & Practice",
+    image:
+      "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=600&h=750&fit=crop",
+    link: "#",
+    description: "Experimental projects and web development practice",
+  },
+  {
+    title: "GitHub Projects",
+    category: "Code & Development",
+    image:
+      "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=600&h=750&fit=crop",
+    link: "https://github.com/kimnikitaschijf",
+    description: "Open source contributions and personal coding projects",
+  },
+];
+---
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta
+      name="description"
+      content="Kim Nikita Schijf - Frontend Design & Development Student portfolio showcasing web development projects, learning journal, and digital experiments."
+    />
+    <title>{title}</title>
+
+    <!-- Preconnect voor belangrijke domeinen -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+    <!-- Fav icoontje -->
+    <link
+      rel="icon"
+      href="/public/favicon.png"
+      type="image/x-icon"
+    />
+
+    <!-- Font Awesome - minimal loading -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      media="print"
+      onload="this.media='all'"
+    />
+
+    <!-- Fonts - minimal loading -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
   </head>
-  <body> 
-	Home
+
+  <body>
+    <!-- Skip to main content link voor keyboard navigatie -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navigation -->
+    <nav class="nav" aria-label="Main navigation">
+      <strong class="nav__logo">
+        KIM NIKITA
+        <span class="nav__logo-dot" aria-hidden="true">●</span>
+      </strong>
+      <ul class="nav__list">
+        <li class="nav__item"><a class="nav__link" href="#about">About</a></li>
+        <li class="nav__item">
+          <a class="nav__link" href="#projects">Projects</a>
+        </li>
+        <li class="nav__item">
+          <a class="nav__link" href="#contact">Contact</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Main content wrapper -->
+    <main id="main-content">
+      <!-- Hero Section -->
+      <section class="hero" aria-labelledby="hero-title">
+        <!-- Decoratieve elementen -->
+        <div class="hero__decoration" aria-hidden="true">
+          <span class="hero__decoration-line"></span>
+          <span class="hero__decoration-circle"></span>
+        </div>
+
+        <h1 class="hero__title" id="hero-title">
+          <span class="hero__title-line">
+            <span class="hero__title-text">Welcome!</span>
+            <em class="hero__bracket" aria-hidden="true">[</em>
+          </span>
+          <span class="hero__title-line">
+            <em class="hero__bracket" aria-hidden="true">]</em>
+            <span class="hero__title-text">I'm Kim</span>
+          </span>
+        </h1>
+        <p class="hero__subtitle">Frontend Design & Development Student</p>
+
+        <!-- Grid decoration -->
+        <div class="hero__grid-decoration" aria-hidden="true"></div>
+
+        <span class="hero__scroll" aria-hidden="true">Scroll down to read more ↓</span>
+      </section>
+
+      <!-- Photos Section -->
+      <section class="photos" aria-labelledby="photos-title">
+        <h2 class="visually-hidden" id="photos-title">Photo Gallery</h2>
+        <div class="photos__container">
+          <ul class="photos__list">
+            {
+              photos.map((photo, i) => (
+                <li class="photos__item">
+                  <img
+                    class="photos__image"
+                    src={photo.url}
+                    alt={photo.alt}
+                    loading="lazy"
+                    decoding="async"
+                    width="400"
+                    height="550"
+                  />
+                  <span class="photos__number" aria-hidden="true">
+                    0{i + 1}
+                  </span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section class="about" id="about" aria-labelledby="about-title">
+        <h2 class="about__title" id="about-title">
+          Building your vision, one project at a time
+        </h2>
+        <p class="about__text">
+          I'm Kim Nikita, a 20-year-old FDND student passionate about crafting
+          meaningful digital experiences. Through my Learning Journal, Digital
+          Garden, and various projects, I explore the intersection of design and
+          development, constantly learning and experimenting with new approaches
+          to web creation.
+        </p>
+
+        <!-- Stats -->
+        <ul class="about__stats">
+          <li class="about__stat">
+            <strong class="about__stat-value">20</strong>
+            <span class="about__stat-label">Years Old</span>
+          </li>
+          <li class="about__stat">
+            <strong class="about__stat-value">∞</strong>
+            <span class="about__stat-label">Projects</span>
+          </li>
+          <li class="about__stat">
+            <strong class="about__stat-value">100%</strong>
+            <span class="about__stat-label">Passion</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Projects Section -->
+      <section class="projects" id="projects" aria-labelledby="projects-title">
+        <header class="projects__header">
+          <h2 class="projects__title" id="projects-title">
+            <span class="projects__bracket" aria-hidden="true">[</span>
+            Selected Work
+            <span class="projects__bracket" aria-hidden="true">]</span>
+          </h2>
+          <span class="projects__counter" aria-label="4 projects available">
+            04 Projects
+          </span>
+        </header>
+
+        <ul class="projects__list">
+          {
+            projects.map((project, i) => (
+              <li class="projects__item">
+                <article class="projects__card">
+                  <a class="projects__card-link" href={project.link}>
+                    <span class="projects__card-number" aria-hidden="true">
+                      0{i + 1}
+                    </span>
+                    <img
+                      class="projects__card-image"
+                      src={project.image}
+                      alt={`${project.title} project thumbnail`}
+                      loading="lazy"
+                      decoding="async"
+                      width="600"
+                      height="750"
+                    />
+                    <h3 class="projects__card-title">
+                      <span aria-hidden="true">→ </span>
+                      {project.title}
+                    </h3>
+                    <p class="projects__card-category">{project.category}</p>
+                  </a>
+                </article>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <!-- Contact Section -->
+      <section class="contact" id="contact" aria-labelledby="contact-title">
+        <h2 class="contact__title" id="contact-title">Let's connect!</h2>
+        <p class="contact__subtitle">Ready to create something amazing?</p>
+
+        <ul class="contact__list">
+          <li class="contact__item">
+            <a
+              class="contact__link"
+              href="https://github.com/kimnikitaschijf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="contact__bracket" aria-hidden="true">[</span>
+              GitHub
+              <span class="contact__bracket" aria-hidden="true">]</span>
+              <span class="visually-hidden">(opens in new tab)</span>
+            </a>
+          </li>
+          <li class="contact__item">
+            <a class="contact__link" href="mailto:kim.nikita.schijf@hva.nl">
+              <span class="contact__bracket" aria-hidden="true">[</span>
+              E-mail
+              <span class="contact__bracket" aria-hidden="true">]</span>
+            </a>
+          </li>
+          <li class="contact__item">
+            <a
+              class="contact__link"
+              href="https://www.linkedin.com/in/kim-nikita-schijf-85188236a/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="contact__bracket" aria-hidden="true">[</span>
+              LinkedIn
+              <span class="contact__bracket" aria-hidden="true">]</span>
+              <span class="visually-hidden">(opens in new tab)</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p class="footer__text">
+        <span class="footer__dot" aria-hidden="true">●</span>
+        © {currentYear} Kim Nikita Schijf
+      </p>
+      <p class="footer__location">Based in Heerhugowaard, NL</p>
+      <a class="footer__link" href="#main-content">
+        <span aria-hidden="true">↑ </span>Back to top
+      </a>
+    </footer>
+
+    <!-- Dark mode button -->
+    <button
+      class="theme-toggle"
+      id="theme-toggle"
+      aria-label="Toggle dark mode"
+      title="Toggle dark mode"
+    >
+      <span class="theme-toggle__icon">
+        <i class="fas fa-sun theme-toggle__sun"></i>
+        <i class="fas fa-moon theme-toggle__moon"></i>
+      </span>
+    </button>
   </body>
 </html>
