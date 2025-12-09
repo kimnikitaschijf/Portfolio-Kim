@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+:root {
+    /* MARK: Typografie */
+    --heading-font: "Playfair Display", Georgia, serif;
+    --site-font: 'Helvetica Neue', Arial, sans-serif;
+    --cursive-font: 'Great Vibes', cursive;
+
+    /* MARK: Font sizes */
+    --font-size-huge: clamp(3rem, 8vw, 8rem);
+    --font-size-large: clamp(2rem, 4vw, 4rem);
+    --font-size-medium: clamp(1.5rem, 3vw, 3rem);
+    --font-size-normal: clamp(1rem, 1.5vw, 1.25rem);
+    --font-size-small: clamp(0.875rem, 1vw, 1rem);
+    --font-size-xsmall: clamp(0.75rem, 0.875vw, 0.875rem);
+
+    /* MARK: Line heights */
+    --line-height-tight: 1;
+    --line-height-snug: 1.2;
+    --line-height-normal: 1.6;
+    --line-height-relaxed: 1.8;
+
+    /* MARK: Spacing systeem */
+    --spacing-xs: 0.5rem;
+    --spacing-s: 1rem;
+    --spacing-m: 1.5rem;
+    --spacing-l: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 5rem;
+
+    /* MARK: Base kleuren */
+    --color-light: hsl(0 0% 100%);
+    --color-dark: hsl(0, 0%, 0%);
+    --color-neutral: oklch(38.74% 0.150 266.36);
+    --color-accent-primary: oklch(69.58% 0.160 55.54);
+
+    /* MARK: Semantic kleuren */
+    --color-background: var(--color-light);
+    --color-surface: oklch(98% 0.01 0);
+    --color-text-primary: var(--color-dark);
+    --color-text-secondary: oklch(60% 0.05 0);
+    --color-border: oklch(90% 0.01 0);
+    --color-gray-light: oklch(95% 0.01 0);
+    --color-gray-medium: oklch(70% 0.02 0);
+}
+
+/* ========== RESET & BASE STYLES ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+*:focus-visible {
+    outline: 2px solid var(--color-accent-primary);
+    outline-offset: 2px;
+}
+
+body {
+    font-family: var(--site-font);
+    background: var(--color-background);
+    color: var(--color-text-primary);
+    overflow-x: hidden;
+    line-height: var(--line-height-normal);
+    font-weight: 300;
+}
+
+/* MARK: Accessibility utilities */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--color-accent-primary);
+    color: var(--color-dark);
+    padding: var(--spacing-s) var(--spacing-m);
+    text-decoration: none;
+    font-weight: 700;
+    z-index: 9999;
+}
+
+.skip-link:focus {
+    top: 0;
+}
