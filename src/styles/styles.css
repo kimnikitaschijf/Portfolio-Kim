@@ -10,12 +10,19 @@
     align-items: center;
     z-index: 100;
     background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
 }
 
 .nav__logo {
     font-size: var(--font-size-small);
     font-weight: 400;
     letter-spacing: 0.05em;
+}
+
+.nav__logo-dot {
+    color: var(--color-accent-primary);
+    font-size: 0.5rem;
+    animation: pulse 2s ease-in-out infinite;
 }
 
 .nav__list {
@@ -32,12 +39,33 @@
     font-size: var(--font-size-xsmall);
     font-weight: 300;
     letter-spacing: 0.05em;
+    position: relative;
+    transition: color var(--transition-normal);
     padding: var(--spacing-xs);
+}
+
+.nav__link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: var(--spacing-xs);
+    right: var(--spacing-xs);
+    height: 1px;
+    background: var(--color-dark);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-normal);
+}
+
+.nav__link:hover::after,
+.nav__link:focus::after {
+    transform: scaleX(1);
 }
 
 /* MARK: Hero section */
 .hero {
     min-height: 100vh;
+    min-height: 100dvh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -45,6 +73,7 @@
     text-align: center;
     padding: var(--spacing-xl) var(--spacing-m);
     padding-top: calc(var(--spacing-xl) + 60px);
+    position: relative;
 }
 
 .hero__title {
@@ -55,9 +84,20 @@
     margin-bottom: var(--spacing-m);
 }
 
+.hero__title-line {
+    display: block;
+    overflow: hidden;
+}
+
+.hero__title-text {
+    display: inline-block;
+}
+
 .hero__bracket {
+    font-style: normal;
     color: var(--color-accent-primary);
     font-weight: 700;
+    margin: 0 0.1em;
 }
 
 .hero__subtitle {
@@ -66,6 +106,15 @@
     letter-spacing: 0.1em;
     color: var(--color-text-secondary);
     margin-bottom: var(--spacing-l);
+}
+
+.hero__scroll {
+    position: absolute;
+    bottom: var(--spacing-m);
+    font-size: var(--font-size-xsmall);
+    letter-spacing: 0.15em;
+    color: var(--color-text-secondary);
+    animation: bounce 2s ease-in-out infinite;
 }
 
 /* MARK: Photos section */
