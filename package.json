@@ -11,5 +11,8 @@
   "dependencies": {
     "astro": "^5.16.4",
     "gsap": "^3.13.0"
-  }
+  },
+  "engines": {
+  "node": "20.x"
+}
 }
