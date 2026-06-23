@@ -1,46 +1,55 @@
-# Astro Starter Kit: Basics
+# Portfolio — Kim Nikita Schijf
+
+Personal portfolio built with **SvelteKit**.
+
+## Commands
 
 ```sh
-npm create astro@latest -- --template basics
+yarn install
+yarn dev      # http://localhost:5173
+yarn build    # production build
+yarn preview  # preview production build
+yarn check    # TypeScript + Svelte validation
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+## Project structure
 
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+src/
+├── lib/
+│   ├── components/
+│   │   ├── layout/       # SiteNav, SiteFooter, ThemeToggle
+│   │   └── sections/     # Homepage sections (one file per section)
+│   ├── data/site.ts      # All content, links, and site config
+│   ├── styles/global.css # Design tokens + shared utilities
+│   └── utils/nav.ts      # Nav active-state helper
+├── routes/
+│   ├── +layout.svelte    # Shell: nav, footer, global CSS
+│   ├── +page.svelte      # Homepage (composes sections)
+│   └── about/+page.svelte
+static/                   # Public assets (images, favicon) — served at /
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Where to edit what
 
-## 🧞 Commands
+| What                               | File                                            |
+| ---------------------------------- | ----------------------------------------------- |
+| Copy, projects, nav, contact links | `src/lib/data/site.ts`                          |
+| Colors, fonts, spacing             | `src/lib/styles/global.css` (`:root` variables) |
+| Homepage sections                  | `src/lib/components/sections/*.svelte`          |
+| About page layout                  | `src/routes/about/+page.svelte`                 |
+| Portrait / favicon                 | `static/` folder                                |
 
-All commands are run from the root of the project, from a terminal:
+## Adding design later
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+1. Tweak CSS variables in `global.css` (`--accent`, `--bg`, fonts, etc.).
+2. Style individual sections in each component's `<style>` block.
+3. Put images in `static/` and reference them as `/filename.jpg`.
 
-## 👀 Want to learn more?
+> **Note:** SvelteKit serves files from `static/`, not `public/`.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Stack
+
+- Svelte 5 + SvelteKit 2
+- TypeScript
+- No CSS framework — plain CSS with custom properties
