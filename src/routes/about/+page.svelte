@@ -1,143 +1,72 @@
 <script lang="ts">
-  import { about, site } from '$lib/data/site';
+  import PageShell from "$lib/components/ui/PageShell.svelte";
+  import PageHeader from "$lib/components/ui/PageHeader.svelte";
+  import PageMeta from "$lib/components/ui/PageMeta.svelte";
+  import ContentBlock from "$lib/components/ui/ContentBlock.svelte";
+  import { about } from "$lib/data/site";
 </script>
 
-<svelte:head>
-  <title>About — {site.fullName}</title>
-  <meta name="description" content="More about {site.fullName} — student, frontend, Amsterdam." />
-</svelte:head>
+<PageMeta
+  title="About"
+  description="More about Kim Nikita Schijf — student, frontend, Amsterdam."
+/>
 
-<article class="about-page wrap">
-  <header class="about-page__head">
-    <a class="about-page__back mono" href="/">← Home</a>
-    <h1 class="about-page__title">About me</h1>
-    <p class="about-page__sub">{about.hello}</p>
-  </header>
+<PageShell>
+  <PageHeader title="About me" subtitle={about.hello} />
 
-  <div class="prose about-page__body">
+  <div class="prose content stack-12">
     <p>{about.intro}</p>
     {#each about.paragraphs as paragraph (paragraph)}
       <p>{paragraph}</p>
     {/each}
   </div>
 
-  <section class="about-page__block" aria-labelledby="skills-heading">
-    <h2 id="skills-heading" class="about-page__h">Skills & tools</h2>
-    <ul class="about-page__tags">
+  <ContentBlock id="skills-heading" title="Skills & tools">
+    <ul class="tag-list">
       {#each about.skills as skill (skill)}
         <li>{skill}</li>
       {/each}
     </ul>
-  </section>
+  </ContentBlock>
 
-  <section class="about-page__block" aria-labelledby="now-heading">
-    <h2 id="now-heading" class="about-page__h">Right now</h2>
-    <ul class="about-page__list">
+  <ContentBlock id="timeline-heading" title="Timeline">
+    <ol class="timeline">
+      {#each about.timeline as entry (entry.year)}
+        <li class="timeline__item">
+          <span class="timeline__year mono">{entry.year}</span>
+          <div>
+            <h3 class="timeline__title">{entry.title}</h3>
+            <p class="timeline__detail">{entry.detail}</p>
+          </div>
+        </li>
+      {/each}
+    </ol>
+  </ContentBlock>
+
+  <ContentBlock id="now-heading" title="Right now">
+    <ul class="bullet-list">
       {#each about.currently as item (item)}
         <li>{item}</li>
       {/each}
     </ul>
-  </section>
+    <p style="margin-top: var(--space-4)">
+      <a class="link-arrow" href="/now">Full /now page →</a>
+    </p>
+  </ContentBlock>
 
-  <blockquote class="about-page__quote">"{about.aside}"</blockquote>
+  <ContentBlock id="fun-heading" title="Random facts">
+    <ul class="fact-list">
+      {#each about.funFacts as fact (fact)}
+        <li>{fact}</li>
+      {/each}
+    </ul>
+  </ContentBlock>
 
-  <p class="about-page__cta">
-    <a class="link-arrow" href="/#work">See my work →</a>
+  <blockquote class="display-quote stack-10">"{about.aside}"</blockquote>
+
+  <p class="page-footer">
+    <a class="link-arrow" href="/work">See my work →</a>
     ·
-    <a class="link-arrow" href="/#contact">Say hi →</a>
+    <a class="link-arrow" href="/contact">Say hi →</a>
   </p>
-</article>
-
-<style>
-  .about-page {
-    padding-block: var(--space-10) var(--space-16);
-  }
-
-  @media (min-width: 768px) {
-    .about-page {
-      padding-block: var(--space-16) var(--space-20);
-    }
-  }
-
-  .about-page__back {
-    display: inline-block;
-    color: var(--text-muted);
-    text-decoration: none;
-    margin-bottom: var(--space-6);
-  }
-
-  .about-page__back:hover {
-    color: var(--text);
-  }
-
-  .about-page__title {
-    font-family: var(--font-display);
-    font-size: var(--text-3xl);
-    font-weight: 700;
-    margin-bottom: var(--space-4);
-  }
-
-  .about-page__sub {
-    font-size: var(--text-lg);
-    max-width: 36rem;
-    margin-bottom: var(--space-10);
-    line-height: 1.55;
-  }
-
-  .about-page__body {
-    max-width: 40rem;
-    margin-bottom: var(--space-12);
-  }
-
-  .about-page__block {
-    max-width: 40rem;
-    margin-bottom: var(--space-10);
-    padding-top: var(--space-8);
-    border-top: 1px solid var(--border);
-  }
-
-  .about-page__h {
-    font-family: var(--font-display);
-    font-size: var(--text-xl);
-    font-weight: 700;
-    margin-bottom: var(--space-5);
-  }
-
-  .about-page__tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2);
-    list-style: none;
-  }
-
-  .about-page__tags li {
-    padding: var(--space-2) var(--space-4);
-    font-size: var(--text-sm);
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 999px;
-  }
-
-  .about-page__list {
-    display: grid;
-    gap: var(--space-3);
-    padding-left: var(--space-5);
-    color: var(--text-muted);
-  }
-
-  .about-page__quote {
-    font-family: var(--font-display);
-    font-size: var(--text-xl);
-    font-style: italic;
-    max-width: 32rem;
-    margin-bottom: var(--space-10);
-    line-height: 1.4;
-  }
-
-  .about-page__cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-2) var(--space-4);
-    align-items: center;
-  }
-</style>
+</PageShell>

@@ -1,0 +1,30 @@
+/**
+ * Small single-purpose helpers used across pages.
+ */
+
+.wrap {
+  width: min(calc(100% - var(--gutter) * 2), var(--container));
+  margin-inline: auto;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.stack-8 {
+  margin-bottom: var(--space-8);
+}
+
+.stack-10 {
+  margin-bottom: var(--space-10);
+}
+
+.stack-12 {
+  margin-bottom: var(--space-12);
+}

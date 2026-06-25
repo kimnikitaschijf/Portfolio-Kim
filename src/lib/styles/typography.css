@@ -1,0 +1,67 @@
+/**
+ * Typography patterns — prose blocks, links, quotes, lists.
+ */
+
+.prose {
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+.prose p + p {
+  margin-top: var(--space-4);
+}
+
+.link-arrow {
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.link-arrow:hover {
+  color: var(--accent);
+}
+
+[data-theme="dark"] .link-arrow:hover {
+  color: var(--text);
+}
+
+.display-quote {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-style: italic;
+  max-width: var(--content-narrow);
+  line-height: 1.4;
+}
+
+.bullet-list {
+  display: grid;
+  gap: var(--space-3);
+  padding-left: var(--space-5);
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  list-style: none;
+}
+
+.tag-list li,
+.pill {
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.tag-list--sm li {
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  background: var(--bg-muted);
+  border: none;
+}

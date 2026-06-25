@@ -4,12 +4,15 @@
 export function isNavItemActive(
   itemHref: string,
   pathname: string,
-  hash: string,
+  _hash: string,
 ): boolean {
   if (itemHref.startsWith("/#")) {
-    if (pathname !== "/") return false;
-    return itemHref === `/${hash}`;
+    return pathname === "/" && itemHref === `/${_hash}`;
   }
 
-  return pathname === itemHref;
+  if (itemHref === "/") {
+    return pathname === "/";
+  }
+
+  return pathname === itemHref || pathname.startsWith(`${itemHref}/`);
 }
