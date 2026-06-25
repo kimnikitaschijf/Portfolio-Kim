@@ -3,6 +3,7 @@
   import SectionBlock from "$lib/components/ui/SectionBlock.svelte";
   import ProjectCard from "$lib/components/ui/ProjectCard.svelte";
   import { externalAttrs } from "$lib/utils/links";
+  import { pages, ui } from "$lib/data/site";
 
   let {
     projects,
@@ -13,17 +14,19 @@
     showHeader?: boolean;
     inPage?: boolean;
   } = $props();
+
+  const gallery = pages.work.gallery;
 </script>
 
 <SectionBlock
-  id="work"
-  title={showHeader ? "Work" : undefined}
-  subtitle={showHeader ? "School projects, notes, and experiments." : undefined}
+  id={gallery.id}
+  title={showHeader ? gallery.title : undefined}
+  subtitle={showHeader ? gallery.subtitle : undefined}
   {inPage}
   bordered={!inPage}
 >
   {#if !showHeader}
-    <h2 id="work-heading" class="visually-hidden">Work</h2>
+    <h2 id="work-heading" class="visually-hidden">{gallery.hiddenTitle}</h2>
   {/if}
 
   <ul class="grid-2" role="list">
@@ -31,8 +34,11 @@
       <li>
         {#if project.href}
           <a class="gallery-link" href={project.href} {...externalAttrs(project.href.startsWith("http"))}>
-            <ProjectCard {project} variant="full" />
-            <span class="visually-hidden"> — open project</span>
+            <ProjectCard {project} variant="full" embedded heading={false} />
+            <span class="visually-hidden">
+              {ui.openProjectHint(project.title)}{#if project.href.startsWith("http")}
+                {ui.externalTabHint}{/if}
+            </span>
           </a>
         {:else}
           <div class="gallery-link gallery-link--static">

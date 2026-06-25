@@ -3,6 +3,8 @@
  * Konami code, portrait clicks, typing "coffee", console art.
  */
 
+import { easterEggs } from "$lib/data/content/easter-eggs";
+
 const KONAMI = [
   "ArrowUp",
   "ArrowUp",
@@ -36,7 +38,7 @@ function unlockSecret(toast: ToastFn) {
   } catch {
     /* ignore */
   }
-  showToast(toast, "Secret unlocked — check /secret");
+  showToast(toast, easterEggs.toasts.secretUnlocked);
   setTimeout(() => {
     window.location.href = "/secret";
   }, 1200);
@@ -58,7 +60,7 @@ function onTypedChar(char: string, toast: ToastFn) {
   typedBuffer = (typedBuffer + char).slice(-COFFEE.length);
   if (typedBuffer.toLowerCase() === COFFEE) {
     typedBuffer = "";
-    showToast(toast, "☕ Coffee mode activated. You're my kind of person.");
+    showToast(toast, easterEggs.toasts.coffee);
     document.body.classList.add("coffee-mode");
     setTimeout(() => document.body.classList.remove("coffee-mode"), 3000);
   }
@@ -73,27 +75,24 @@ function onPortraitClick(toast: ToastFn) {
 
   if (portraitClicks === 5) {
     portraitClicks = 0;
-    showToast(toast, "👀 You found me. Heading somewhere special...");
+    showToast(toast, easterEggs.toasts.portraitFound);
     setTimeout(() => {
       window.location.href = "/secret";
     }, 1000);
   } else if (portraitClicks === 3) {
-    showToast(toast, "Keep going...");
+    showToast(toast, easterEggs.toasts.portraitMid);
   }
 }
 
 function logConsoleArt() {
   const styles = [
-    "color: #2d2d2d; font-size: 14px; font-weight: bold;",
-    "color: #5c5c5c; font-size: 12px;",
-    "color: #888; font-size: 11px;",
+    "color: #d4517a; font-size: 14px; font-weight: bold;",
+    "color: #6b5b52; font-size: 12px;",
+    "color: #b89e92; font-size: 11px;",
   ];
-  console.log("%cHey, curious dev 👋", styles[0]);
-  console.log("%cKim Nikita Schijf — FDND student", styles[1]);
-  console.log(
-    "%cPsst… try the Konami code or type 'coffee'. Or just say hi: kim.nikita.schijf@hva.nl",
-    styles[2],
-  );
+  console.log(`%c${easterEggs.console.greeting}`, styles[0]);
+  console.log(`%c${easterEggs.console.subtitle}`, styles[1]);
+  console.log(`%c${easterEggs.console.hint}`, styles[2]);
 }
 
 export function initEasterEggs(showToast: ToastFn) {
@@ -119,7 +118,9 @@ export function initEasterEggs(showToast: ToastFn) {
     if (
       target instanceof HTMLImageElement &&
       (target.classList.contains("meet__photo") ||
-        target.classList.contains("meet-grid__photo"))
+        target.classList.contains("home-hero__photo") ||
+        target.classList.contains("home-cover__photo") ||
+        target.classList.contains("home-intro__photo"))
     ) {
       onPortraitClick(showToast);
     }

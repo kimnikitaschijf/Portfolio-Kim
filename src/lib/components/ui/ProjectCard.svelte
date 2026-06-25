@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { Project } from "$lib/data/types";
+  import { ui } from "$lib/data/site";
   import { externalAttrs } from "$lib/utils/links";
 
   let {
@@ -7,11 +8,17 @@
     variant = "full",
     href = undefined,
     external = undefined,
+    embedded = false,
+    heading = true,
   }: {
     project: Project;
     variant?: "full" | "compact";
     href?: string;
     external?: boolean;
+    /** When true, parent link handles navigation — no inner link or “coming soon”. */
+    embedded?: boolean;
+    /** Set false when the card sits inside a link (avoids heading inside interactive). */
+    heading?: boolean;
   } = $props();
 
   const linkHref = $derived(href ?? project.href);
@@ -34,13 +41,19 @@
       height={variant === "compact" ? 300 : 500}
     />
     {#if project.status && variant === "full"}
-      <span class="project-card__status mono">{project.status}</span>
+      <span class="project-card__status mono">
+        <span class="visually-hidden">{ui.projectCard.statusPrefix}</span>{project.status}
+      </span>
     {/if}
   </div>
 
   <div class="project-card__body">
     <p class="project-card__cat mono">{project.category}</p>
-    <h3 class="project-card__title">{project.title}</h3>
+    {#if heading}
+      <h3 class="project-card__title">{project.title}</h3>
+    {:else}
+      <p class="project-card__title">{project.title}</p>
+    {/if}
     <p class="project-card__desc">{description}</p>
 
     {#if variant === "full" && project.tags?.length}
@@ -55,10 +68,15 @@
       <p class="project-card__note">{project.note}</p>
     {/if}
 
-    {#if variant === "compact" && linkHref}
-      <a class="link-arrow" href={linkHref} {...externalAttrs(isExternal)}>View →</a>
-    {:else if variant === "full" && !linkHref}
-      <p class="project-card__soon mono">coming soon</p>
+    {#if variant === "compact" && linkHref && !embedded}
+      <a class="link-arrow" href={linkHref} {...externalAttrs(isExternal)}>
+        {ui.projectCard.view}
+        {#if isExternal}
+          <span class="visually-hidden"> {ui.externalTabHint}</span>
+        {/if}
+      </a>
+    {:else if variant === "full" && !linkHref && !embedded}
+      <p class="project-card__soon mono">{ui.projectCard.comingSoon}</p>
     {/if}
   </div>
 </article>

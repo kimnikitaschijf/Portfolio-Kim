@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { ui } from "$lib/data/site";
+
   let isDark = $state(false);
 
   $effect(() => {
@@ -21,7 +23,8 @@
   type="button"
   class="theme-btn"
   onclick={toggleTheme}
-  aria-label={isDark ? "Light mode" : "Dark mode"}
+  aria-label={isDark ? ui.theme.toLight : ui.theme.toDark}
+  aria-pressed={isDark}
 >
-  {isDark ? "☀" : "☾"}
+  <span aria-hidden="true">{isDark ? "☀" : "☾"}</span>
 </button>

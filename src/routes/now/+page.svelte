@@ -2,33 +2,38 @@
   import PageShell from "$lib/components/ui/PageShell.svelte";
   import PageHeader from "$lib/components/ui/PageHeader.svelte";
   import PageMeta from "$lib/components/ui/PageMeta.svelte";
-  import { now } from "$lib/data/site";
+  import InfoCard from "$lib/components/ui/InfoCard.svelte";
+  import { now, pages, ui } from "$lib/data/site";
+
+  const page = pages.now;
 </script>
 
-<PageMeta title="Now" description="What Kim is focused on right now." />
+<PageMeta title={page.meta.title} description={page.meta.description} />
 
 <PageShell>
-  <PageHeader title="Now" subtitle={now.intro} />
+  <PageHeader title={page.header.title} subtitle={now.intro} />
 
-  <p class="mono text-muted stack-8">Last updated: {now.updated}</p>
+  <p class="mono text-muted stack-8">{page.updatedPrefix} {now.updated}</p>
 
-  <ul class="grid-2 stack-10">
+  <ul class="grid-2 stack-10" role="list">
     {#each now.items as item (item.area)}
       <li>
-        <article class="surface-card info-card">
-          <h2 class="info-card__title info-card__title--sm">{item.area}</h2>
-          <p class="info-card__text">{item.text}</p>
-        </article>
+        <InfoCard title={item.area} text={item.text} titleSmall />
       </li>
     {/each}
   </ul>
 
   <p class="page-footer">
-    Inspired by
-    <a class="link-arrow" href="https://nownownow.com" target="_blank" rel="noopener noreferrer">
-      nownownow.com
+    {page.credit.before}
+    <a
+      class="link-arrow"
+      href={page.credit.link.href}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {page.credit.link.label}<span class="visually-hidden"> {ui.externalTabHint}</span>
     </a>
     ·
-    <a class="link-arrow" href="/contact">Say hi →</a>
+    <a class="link-arrow" href={page.footer.href}>{page.footer.label}</a>
   </p>
 </PageShell>

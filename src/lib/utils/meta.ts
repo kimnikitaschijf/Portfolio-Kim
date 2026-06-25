@@ -1,4 +1,5 @@
 import { site } from "$lib/data/config";
+import { home } from "$lib/data/content/home";
 
 /** Formats a page title consistently across the site. */
 export function pageTitle(page?: string) {
@@ -6,4 +7,4 @@ export function pageTitle(page?: string) {
 }
 
 /** Default meta description for pages that don't set one. */
-export const defaultDescription = `${site.fullName} — ${site.role}. Work, notes, and contact.`;
+export const defaultDescription = home.meta.description;

@@ -11,6 +11,7 @@
     inPage = false,
     flush = false,
     hero = false,
+    ariaLabel = undefined,
     children,
   }: {
     id?: string;
@@ -21,6 +22,7 @@
     inPage?: boolean;
     flush?: boolean;
     hero?: boolean;
+    ariaLabel?: string;
     children: Snippet;
   } = $props();
 
@@ -35,6 +37,7 @@
   class:section-block--in-page={inPage}
   class:section-block--flush={flush}
   class:section-block--hero={hero}
+  aria-label={!title ? ariaLabel : undefined}
   aria-labelledby={title ? headingId : undefined}
 >
   {#if inPage}

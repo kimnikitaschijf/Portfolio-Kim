@@ -86,6 +86,11 @@
   border-top: 1px solid var(--border);
 }
 
+.page-footer--centered {
+  border-top: none;
+  justify-content: center;
+}
+
 .content-block {
   max-width: var(--content);
   margin-bottom: var(--space-10);
@@ -263,6 +268,10 @@
   background: var(--accent);
 }
 
+.nav__link--on:focus-visible {
+  outline-color: var(--accent-text);
+}
+
 /* ——— Footer ——— */
 
 .foot {
@@ -310,6 +319,27 @@
 .foot__top {
   font-size: var(--text-sm);
   font-weight: 600;
+  color: var(--accent);
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+.foot__top:hover {
+  color: var(--text);
+}
+
+/* ——— Wave divider ——— */
+
+.wave-divider {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  margin-bottom: -1px;
+}
+
+.wave-divider svg {
+  display: block;
+  width: 100%;
+  height: clamp(2.5rem, 5vw, 4rem);
 }

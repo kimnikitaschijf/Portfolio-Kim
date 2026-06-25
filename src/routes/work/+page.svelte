@@ -3,18 +3,14 @@
   import PageHeader from "$lib/components/ui/PageHeader.svelte";
   import PageMeta from "$lib/components/ui/PageMeta.svelte";
   import GallerySection from "$lib/components/sections/GallerySection.svelte";
-  import { projects } from "$lib/data/site";
+  import { pages, projects } from "$lib/data/site";
+
+  const page = pages.work;
 </script>
 
-<PageMeta
-  title="Work"
-  description="Projects, school work, and experiments by Kim Nikita Schijf."
-/>
+<PageMeta title={page.meta.title} description={page.meta.description} />
 
 <PageShell compactBottom>
-  <PageHeader
-    title="Work"
-    subtitle="School projects, this portfolio, learning notes, and the messy sandbox folder."
-  />
+  <PageHeader title={page.header.title} subtitle={page.header.subtitle} />
   <GallerySection {projects} showHeader={false} inPage />
 </PageShell>

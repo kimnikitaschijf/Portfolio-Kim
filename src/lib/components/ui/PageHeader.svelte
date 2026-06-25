@@ -1,9 +1,11 @@
 <script lang="ts">
+  import { ui } from "$lib/data/site";
+
   let {
     title,
     subtitle = undefined,
     backHref = "/",
-    backLabel = "← Home",
+    backLabel = ui.backHome,
   }: {
     title: string;
     subtitle?: string;

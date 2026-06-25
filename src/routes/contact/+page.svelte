@@ -3,14 +3,14 @@
   import PageHeader from "$lib/components/ui/PageHeader.svelte";
   import PageMeta from "$lib/components/ui/PageMeta.svelte";
   import ConnectSection from "$lib/components/sections/ConnectSection.svelte";
+  import { pages } from "$lib/data/site";
+
+  const page = pages.contact;
 </script>
 
-<PageMeta title="Contact" description="Get in touch with Kim Nikita Schijf." />
+<PageMeta title={page.meta.title} description={page.meta.description} />
 
 <PageShell compactBottom>
-  <PageHeader
-    title="Say hi"
-    subtitle="Internship, school project, collab, or just hello — I'd love to hear from you."
-  />
+  <PageHeader title={page.header.title} subtitle={page.header.subtitle} />
   <ConnectSection showHeader={false} flush />
 </PageShell>

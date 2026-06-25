@@ -13,7 +13,11 @@ export {
   featuredProjects,
 } from "$lib/data/content/projects";
 export { noteEntries } from "$lib/data/content/notes";
-export { now, colophon, secretPage } from "$lib/data/content/pages";
+export { now, colophon, secretPage, pages } from "$lib/data/content/pages";
+export { home } from "$lib/data/content/home";
+export { ui } from "$lib/data/content/ui";
+export { errors } from "$lib/data/content/errors";
+export { easterEggs } from "$lib/data/content/easter-eggs";
 export {
   navItems,
   exploreLinks,

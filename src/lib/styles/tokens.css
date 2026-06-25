@@ -7,6 +7,7 @@
   --font-body: "Outfit", system-ui, sans-serif;
   --font-display: "Fraunces", Georgia, serif;
   --font-mono: "IBM Plex Mono", monospace;
+  --font-script: "Caveat", cursive;
 
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
@@ -37,29 +38,40 @@
   --radius-lg: 1rem;
   --transition: 0.2s ease;
 
-  --bg: #fafafa;
-  --bg-muted: #f0f0f0;
+  /* Warm crème/roze palet — Shore to Sea + Beyond the Birds */
+  --bg: #fdf6f0;
+  --bg-muted: #f5ede3;
   --surface: #ffffff;
-  --text: #1a1a1a;
-  --text-muted: #5c5c5c;
-  --border: #e0e0e0;
-  --accent: #2d2d2d;
+  --text: #1e1412;
+  --text-muted: #6b5b52;
+  --border: #e8d9cc;
+
+  --accent: #d4517a; /* hot pink — primair */
   --accent-text: #ffffff;
-  --nav-bg: rgb(250 250 250 / 0.92);
-  --shadow-md: 0 4px 20px rgb(0 0 0 / 0.08);
+  --accent-alt: #4a5c2f; /* olijfgroen — secondary */
+  --accent-alt-text: #ffffff;
+  --accent-yellow: #f5c842; /* geel — highlight */
+
+  --nav-bg: rgb(253 246 240 / 0.92);
+  --shadow-md: 0 4px 20px rgb(30 20 18 / 0.1);
 }
 
 [data-theme="dark"] {
-  --bg: #141414;
-  --bg-muted: #1c1c1c;
-  --surface: #222222;
-  --text: #f5f5f5;
-  --text-muted: #a8a8a8;
-  --border: #333333;
-  --accent: #f0f0f0;
-  --accent-text: #141414;
-  --nav-bg: rgb(20 20 20 / 0.92);
-  --shadow-md: 0 4px 20px rgb(0 0 0 / 0.35);
+  --bg: #1a1210;
+  --bg-muted: #231916;
+  --surface: #2c1f1b;
+  --text: #f5ede3;
+  --text-muted: #b89e92;
+  --border: #3d2b24;
+
+  --accent: #f07099;
+  --accent-text: #1a1210;
+  --accent-alt: #7aad4a;
+  --accent-alt-text: #1a1210;
+  --accent-yellow: #f5c842;
+
+  --nav-bg: rgb(26 18 16 / 0.92);
+  --shadow-md: 0 4px 20px rgb(0 0 0 / 0.4);
 }
 
 @media (min-width: 768px) {

@@ -1,6 +1,6 @@
 # Portfolio — Kim Nikita Schijf
 
-Personal portfolio built with **SvelteKit**.
+Personal portfolio built with **SvelteKit**. Content and structure are complete; visual design is applied separately via CSS tokens.
 
 ## Commands
 
@@ -19,64 +19,65 @@ src/
 ├── lib/
 │   ├── components/
 │   │   ├── layout/       # SiteNav, SiteFooter, ThemeToggle
-│   │   ├── sections/     # Homepage sections (CoverHero, MeetSection, …)
+│   │   ├── sections/     # HomeHero, FeaturedWork, GallerySection, …
 │   │   └── ui/           # PageShell, SectionBlock, ProjectCard, PageMeta, …
 │   ├── data/
-│   │   ├── config.ts     # Site identity & links (name, email, github, …)
+│   │   ├── config.ts     # Site identity & links
 │   │   ├── navigation.ts # Nav, footer, contact links
 │   │   ├── types.ts      # Shared TypeScript types
-│   │   ├── content/      # Page copy (about, projects, notes, pages)
-│   │   └── site.ts       # Barrel export — import from here as usual
+│   │   ├── content/      # All copy — see below
+│   │   └── site.ts       # Barrel export — import from here
 │   ├── scripts/          # Easter eggs
-│   ├── styles/
-│   │   ├── tokens.css    # Design tokens (:root variables) ← start here
-│   │   ├── base.css      # Reset & accessibility
-│   │   ├── utilities.css # .wrap, .stack-*, .text-muted
-│   │   ├── typography.css
-│   │   ├── layout.css    # Pages, sections, nav, footer, grids
-│   │   ├── components.css# Cards, hero, project tiles, …
-│   │   └── global.css    # Imports all of the above
+│   ├── styles/           # CSS modules (tokens → components)
 │   └── utils/            # meta, nav, links
-├── routes/               # One folder per page
-static/                   # Images, favicon — served at /
+├── routes/               # Thin page composers — no hardcoded copy
+static/                   # Images, favicon
+DESIGN.md                 # Handoff guide for applying visual design
 ```
 
 ## Pages
 
-| Route       | What it is                           |
-| ----------- | ------------------------------------ |
-| `/`         | Landing — hero, intro, featured work |
-| `/about`    | Full bio, skills, timeline           |
-| `/work`     | All projects with details            |
-| `/notes`    | Wiki highlights                      |
-| `/now`      | Current focus (à la nownownow)       |
-| `/contact`  | Email, GitHub, LinkedIn              |
-| `/colophon` | Stack, fonts, credits                |
-| `/secret`   | Hidden — find it yourself            |
+| Route       | What it is                             |
+| ----------- | -------------------------------------- |
+| `/`         | Landing — hero, featured work, explore |
+| `/about`    | Full bio, skills, timeline, facts      |
+| `/work`     | All projects with details              |
+| `/notes`    | Wiki highlights                        |
+| `/now`      | Current focus (à la nownownow)         |
+| `/contact`  | Email, GitHub, LinkedIn                |
+| `/colophon` | Stack, fonts, credits                  |
+| `/secret`   | Hidden — find it yourself              |
 
-## Applying a design later
+## Content — where to edit copy
 
-1. **`tokens.css`** — colors, fonts, spacing, radius, shadows
-2. **`app.html`** — Google Fonts link (keep in sync with tokens)
-3. **`typography.css`** — link styles, prose, quotes
-4. **`layout.css`** — page rhythm, nav, footer, grids
-5. **`components.css`** — cards, hero, project tiles, hover states
-6. **`static/`** — swap images and favicon
+All user-facing text lives in `src/lib/data/content/`. Routes and components read from `$lib/data/site`.
 
-Content stays separate in `src/lib/data/content/` — you won't need to touch routes when restyling.
+| What                         | File(s)                       |
+| ---------------------------- | ----------------------------- |
+| Name, email, social links    | `data/config.ts`              |
+| About copy, skills, timeline | `data/content/about.ts`       |
+| Projects                     | `data/content/projects.ts`    |
+| Notes highlights             | `data/content/notes.ts`       |
+| Page titles, meta, CTAs      | `data/content/pages.ts`       |
+| Homepage sections            | `data/content/home.ts`        |
+| UI labels (nav, cards)       | `data/content/ui.ts`          |
+| Error page copy              | `data/content/errors.ts`      |
+| Easter egg messages          | `data/content/easter-eggs.ts` |
+| Now / colophon / secret body | `data/content/pages.ts`       |
+| Navigation & contact         | `data/navigation.ts`          |
 
-## Where to edit what
+## Applying design later
 
-| What                         | File(s)                    |
-| ---------------------------- | -------------------------- |
-| Name, email, social links    | `data/config.ts`           |
-| About copy, skills, timeline | `data/content/about.ts`    |
-| Projects                     | `data/content/projects.ts` |
-| Notes highlights             | `data/content/notes.ts`    |
-| Now / colophon / secret      | `data/content/pages.ts`    |
-| Navigation & contact         | `data/navigation.ts`       |
-| Design tokens                | `styles/tokens.css`        |
-| Component look & feel        | `styles/components.css`    |
+See **[DESIGN.md](./DESIGN.md)** for the full handoff guide.
+
+Quick version:
+
+1. `src/lib/styles/tokens.css` — colors, fonts, spacing
+2. `src/app.html` — Google Fonts (sync with tokens)
+3. `typography.css` → `layout.css` → `components.css`
+4. `static/` — images and favicon
+
+**Do not** change `src/lib/data/` or route structure for a design pass.
 
 ## Easter eggs
 

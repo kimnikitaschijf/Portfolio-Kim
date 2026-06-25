@@ -1,9 +1,9 @@
 export const site = {
   name: "Kim Nikita",
   fullName: "Kim Nikita Schijf",
-  role: "Frontend Design & Development student",
-  school: "FDND @ HvA, Amsterdam",
-  location: "Heerhugowaard → Amsterdam",
+  role: "FDND graduate · intern @ Hypersolid",
+  school: "Graduated FDND @ HvA",
+  location: "Heerhugowaard",
   email: "kim.nikita.schijf@hva.nl",
   github: "https://github.com/kimnikitaschijf",
   linkedin: "https://www.linkedin.com/in/kim-nikita-schijf-85188236a/",

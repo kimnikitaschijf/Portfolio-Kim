@@ -23,7 +23,7 @@
 }
 
 [data-theme="dark"] .link-arrow:hover {
-  color: var(--text);
+  color: var(--accent);
 }
 
 .display-quote {
@@ -53,7 +53,7 @@
 .pill {
   padding: var(--space-2) var(--space-4);
   font-size: var(--text-sm);
-  background: var(--surface);
+  background: var(--bg-muted);
   border: 1px solid var(--border);
   border-radius: 999px;
 }
@@ -64,4 +64,14 @@
   color: var(--text-muted);
   background: var(--bg-muted);
   border: none;
+}
+
+/* ——— Script accent — handgeschreven stijl ——— */
+.script-accent {
+  font-family: var(--font-script);
+  font-size: 1.25em;
+  font-weight: 600;
+  color: var(--accent);
+  display: inline-block;
+  transform: rotate(-2deg);
 }

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { page } from "$app/state";
   import PageShell from "$lib/components/ui/PageShell.svelte";
+  import { errors } from "$lib/data/site";
   import { pageTitle } from "$lib/utils/meta";
 
   let { status = 404, error }: { status?: number; error?: Error } = $props();
@@ -14,27 +15,27 @@
   <p class="error__code mono">{status}</p>
   <h1 class="error__title">
     {#if status === 404}
-      This page doesn't exist
+      {errors.notFound.title}
     {:else}
-      Something went wrong
+      {errors.generic.title}
     {/if}
   </h1>
   <p class="error__text">
     {#if status === 404}
-      Maybe it moved, maybe it never existed, maybe you found a broken link. Happens.
+      {errors.notFound.text}
     {:else}
-      {error?.message ?? "An unexpected error occurred."}
+      {error?.message ?? errors.generic.fallbackMessage}
     {/if}
   </p>
 
   {#if status === 404}
-    <p class="error__hint mono">Hint: not everything on this site is linked from the menu.</p>
+    <p class="error__hint mono">{errors.notFound.hint}</p>
   {/if}
 
-  <p class="page-footer" style="border-top: none; justify-content: center">
-    <a class="link-arrow" href="/">Back home →</a>
+  <p class="page-footer page-footer--centered">
+    <a class="link-arrow" href={errors.footer.home.href}>{errors.footer.home.label}</a>
     {#if page.url.pathname !== "/work"}
-      · <a class="link-arrow" href="/work">See my work →</a>
+      · <a class="link-arrow" href={errors.footer.work.href}>{errors.footer.work.label}</a>
     {/if}
   </p>
 </PageShell>

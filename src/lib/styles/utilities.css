@@ -17,6 +17,14 @@
   color: var(--text-muted);
 }
 
+.text-italic {
+  font-style: italic;
+}
+
+.stack-4 {
+  margin-top: var(--space-4);
+}
+
 .stack-8 {
   margin-bottom: var(--space-8);
 }
